@@ -5,7 +5,6 @@
 #spring.datasource.password=root
 #spring.jpa.show-sql=true
 #spring.jpa.database=mysql
-#openwheatermap.key=d3f840edd604a13c2796272c2ee36c46
 
 spring:
   config:
