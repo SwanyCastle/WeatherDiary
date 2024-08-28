@@ -20,6 +20,15 @@ spring:
     show-sql: true
     database: mysql
 
+#springdoc:
+#  api-docs:
+#    title: Weather Diary API
+#    description: Weather Diary API documentation
+#    version: v1
+#  swagger-ui:
+#    path: /swagger-ui.html
+
+
 logging:
   config: classpath:logback-spring.xml
 
