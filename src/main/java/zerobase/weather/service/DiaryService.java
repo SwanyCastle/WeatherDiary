@@ -14,9 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 import zerobase.weather.WeatherApplication;
 import zerobase.weather.domain.DateWeather;
 import zerobase.weather.domain.Diary;
-import zerobase.weather.exception.InvalidDateException;
+import zerobase.weather.exception.WeatherDiaryException;
 import zerobase.weather.repository.DateWeatherRepository;
 import zerobase.weather.repository.DiaryRepository;
+import zerobase.weather.type.ErrorCode;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -63,9 +64,9 @@ public class DiaryService {
     @Transactional(readOnly = true)
     public List<Diary> readDiary(LocalDate date) {
         logger.info("Read diary");
-//        if (date.isAfter(LocalDate.ofYearDay(3050, 1))) {
-//            throw new InvalidDateException();
-//        }
+        if (date.isAfter(LocalDate.ofYearDay(3050, 1))) {
+            throw new WeatherDiaryException(ErrorCode.INVALID_DATE_ERROR);
+        }
         return diaryRepository.findAllByDate(date);
     }
 
