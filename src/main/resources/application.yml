@@ -20,5 +20,8 @@ spring:
     show-sql: true
     database: mysql
 
+logging:
+  config: classpath:logback-spring.xml
+
 openweathermap:
   key: ${OPEN_WEATHER_MAP_API_KEY}

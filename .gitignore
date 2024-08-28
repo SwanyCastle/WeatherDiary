@@ -20,6 +20,9 @@ bin/
 ### Environment Variable ###
 .env*
 
+### Log files ###
+logs
+
 ### IntelliJ IDEA ###
 .idea
 *.iws
