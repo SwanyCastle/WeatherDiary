@@ -32,59 +32,46 @@
       <td>3.3.3</td>
     </tr>  
     <tr>
-      <td>Redis</td>
-      <td>7.4.0</td>
+      <td>Json Simple (Google Code)</td>
+      <td>1.1.1</td>
     </tr>
     <tr>
-      <td>Redisson</td>
-      <td>3.32.0</td>
+      <td>SpringDoc OpenAPI Starter WebMVC UI</td>
+      <td>2.0.2</td>
     </tr>
   </tbody>
 </table>
 
-### 📌 Spring 3.x.x 및 Java 17 이상 에서 호환되는 Embedded Redis 라이브러리가 없어 Docker 로 Redis 서버 띄워서 진행
+### 📌 Spring 3.x.x 및 Java 17 이상 에서 Springfox 라이브러리는 호환되지 않아서 <br> &nbsp;&nbsp;&nbsp;&nbsp; 호환되는 SpringDoc OpenAPI Starter WebMVC UI 라이브러리 사용
 <br>
 <br>
 
 # 🗓️ 기능
-#### 사용자
-  - 사용자 CRUD 는 따로 생성하지 않고 샘플로 Spring Application 이 실행 될때 <br>
-    H2 데이터 베이스에 사용자 1, 2, 3을 자동으로 저장
+#### 날씨
+  - 날씨 데이터를 매일 새벽 1시에 자동적으로 OpenWeatherMap API 에서 받아와 <br>
+    DB에 저장
 
-#### 계좌
-  - **계좌 생성** <br>
-    사용자가 없는 경우 <br>
-    사용자가 있지만 해당 사용자의 계좌가 이미 10개인 경우, 위와 같은 경우에 **실패응답**을 반환 <br>
-    *(하나의 사용자당 최대 생성할 수 있는 계좌 10개)* <br>
-    그 외의 경우에는 **성공응답**을 반환 
+#### 일기
+  - **일기 생성** <br>
+    일기를 쓰고 싶은 날짜에 날씨 데이터가 없는 경우에는 OpenWeatherMap API 를 호출해 <br>
+    해당 날짜의 날씨 데이터를 받아와 일기 생성
+    Request Param 에 맞지 않는 데이터가 들어오면 500 INTERNAL_SERVER_ERROR
     
-  - **계좌 해지** <br>
-    사용자 또는 계좌가 없는 경우 <br>
-    사용자의 정보와 계좌의 소유주 정보가 다른 경우 <br>
-    계좌가 이미 해지 상태인 경우 <br>
-    해당 계좌에 잔액이 남아 있는 경우, 위와 같은 경우에 **실패응답**을 반환<br>
-    그 외의 경우에는 **성공응답**을 반환
+  - **일기 조회** <br>
+    조회하고 싶은 날짜의 일기를 조회 해당하는 날짜에 여러개의 일기가 저장될 수도 있어 List 로 반환
+    Request Param 에 맞지 않는 데이터가 들어오면 500 INTERNAL_SERVER_ERROR
     
-  - **계좌 확인** <br>
-    사용자가 없는 경우에 **실패응답**을 반환하고 그 외의 경우에 **성공응답**을 반환
+  - **일기 구간 조회** <br>
+    조회하고 싶은 구간의 시작 날짜, 끝 날짜로 일기를 조회
+    Request Param 에 맞지 않는 데이터가 들어오면 500 INTERNAL_SERVER_ERROR
+    
+  - **일기 수정** <br>
+    수정하고싶은 날짜의 일기 데이터 수정
+    Request Param 에 맞지 않는 데이터가 들어오면 500 INTERNAL_SERVER_ERROR
 
-#### 거래
-  - 거래 생성 (잔액 사용)
-    사용자가 없는경우 <br>
-    사용자 정보와 계좌 소유주가 다른 경우 <br>
-    계좌가 이미 해지되어 있는 경우 <br>
-    거래 금액이 계좌의 잔액 보다 큰 경우 <br>
-    거래 금액이 너무 작거나 큰 경우, 위와 같은 경우에 **실패응답**을 반환<br>
-    그외의 경우에는 **성공응답**을 반환
-    
-  - 거래 취소 (잔액 사용 취소)
-    삭제하고 싶은 거래 id 에 해당하는 거래가 없는 경우 <br>
-    거래 금액과 거래 취소 금액이 다른 경우 <br>
-    거래일로부터 1년이 넘은 거래는 취소가 불가능해서 위와 같은 경우 **실패응답**을 반환 <br>
-    그 외의 경우에는 **성공응답**을 반환
-    
-  - 거래 확인
-    조회하고 싶은 거래 id에 해당하는 거래가 없는경우 **실패응답**을 반환하고 그 외의 경우 **성공응답**을 반환
+  - **일기 삭제** <br>
+    삭제하고 싶은 날짜의 일기 데이터 삭제
+    Request Param 에 맞지 않는 데이터가 들어오면 500 INTERNAL_SERVER_ERROR
 <br>
 <br>
 
@@ -99,42 +86,63 @@
   </thead>
   <tbody>
     <tr>
-      <td rowspan="3">계좌</td>
-      <td>계좌 생성</td>
-      <td>/account</td>
+      <td rowspan="5">일기</td>
+      <td>일기 생성</td>
+      <td>/diary/create?date={date}</td>
       <td>POST</td>
       <td>200</td>
     </tr>
     <tr>
-      <td>계좌 삭제</td>
-      <td>/account</td>
+      <td>일기 조회</td>
+      <td>/diary/read?date={date}</td>
+      <td>GET</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>일기 구간 조회</td>
+      <td>/diaries/read?date={date}</td>
+      <td>GET</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>일기 수정</td>
+      <td>/diary/update?date={date}</td>
+      <td>PUT</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <td>일기 삭제</td>
+      <td>/diary/delete?date={date}</td>
       <td>DELETE</td>
-      <td>200</td>
-    </tr>
-    <tr>
-      <td>계좌 확인</td>
-      <td>/account?user_id={userId}</td>
-      <td>GET</td>
-      <td>200</td>
-    </tr>
-    <tr>
-      <td rowspan="3">거래</td>
-      <td>거래 생성</td>
-      <td>/transaction/use</td>
-      <td>POST</td>
-      <td>200</td>
-    </tr>
-    <tr>
-      <td>거래 취소</td>
-      <td>/transaction/cancel</td>
-      <td>POST</td>
-      <td>200</td>
-    </tr>
-    <tr>
-      <td>거래 확인</td>
-      <td>/transaction/{transactionId}</td>
-      <td>GET</td>
       <td>200</td>
     </tr>
   </tbody>
 </table>
+
+<br>
+<br>
+
+# Swagger UI
+- 날씨 일기 생성 API
+<img width="1315" alt="날씨일기전체API" src="https://github.com/user-attachments/assets/29077498-babd-4d48-844e-7e94a75bc65f">
+<br>
+<br>
+
+- 날씨 일기 조회 API
+<img width="1290" alt="날씨일기조회" src="https://github.com/user-attachments/assets/d248570a-832f-4295-a6c3-03d1f9d91feb">
+<br>
+<br>
+
+- 날씨 일기 구간 조회 API
+<img width="1288" alt="날씨일기구간조회" src="https://github.com/user-attachments/assets/e71a37b9-dffb-4937-97d8-d66fe0027fd0">
+<br>
+<br>
+
+- 날씨 일기 수정 API
+<img width="1297" alt="날씨일기수정" src="https://github.com/user-attachments/assets/9a6cbd76-0961-4bd1-b40a-0bf5bbd0621b">
+<br>
+<br>
+
+- 날씨 일기 삭제 API
+<img width="1289" alt="날씨일기삭제" src="https://github.com/user-attachments/assets/47e3d90f-39c2-4acd-a868-eb3b88e17a92">
+
