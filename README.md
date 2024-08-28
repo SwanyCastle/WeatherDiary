@@ -123,21 +123,37 @@
 <br>
 
 # Swagger UI
+- 날씨 일기 API
+
+  <img width="1294" alt="Swagger-ui-날씨일기전체" src="https://github.com/user-attachments/assets/dd962a1c-9a5e-45c6-9fee-484eeec60359">
+<br>
+<br>
+
 - 날씨 일기 생성 API
+
+  <img width="1274" alt="Swagger-ui-날씨일기생성" src="https://github.com/user-attachments/assets/86479986-c246-4ab0-a6a6-5ad6d1677124">
 <br>
 <br>
 
 - 날씨 일기 조회 API
+
+  <img width="1275" alt="Swagger-ui-날씨일기조회" src="https://github.com/user-attachments/assets/074b30e1-e006-40c5-b7a6-23f67c7af0fa">
 <br>
 <br>
 
 - 날씨 일기 구간 조회 API
+
+  <img width="1274" alt="Swagger-ui-날씨일기구간조회" src="https://github.com/user-attachments/assets/a8eca65e-10a8-42ad-81f6-33b880fe7536">
 <br>
 <br>
 
 - 날씨 일기 수정 API
+
+  <img width="1275" alt="Swagger-ui-날씨일기수정" src="https://github.com/user-attachments/assets/5893076c-a51f-4374-ac5c-70fcc9cfde8e">
 <br>
 <br>
 
 - 날씨 일기 삭제 API
+
+  <img width="1274" alt="Swagger-ui-날씨일기삭제" src="https://github.com/user-attachments/assets/15680864-3f9c-47b8-a39a-e415312bcb33">
 
