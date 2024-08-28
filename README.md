@@ -88,31 +88,31 @@
     <tr>
       <td rowspan="5">일기</td>
       <td>일기 생성</td>
-      <td>/diary/create?date={date}</td>
+      <td>/create/diary?date={date}</td>
       <td>POST</td>
       <td>200</td>
     </tr>
     <tr>
       <td>일기 조회</td>
-      <td>/diary/read?date={date}</td>
+      <td>/read/diary?date={date}</td>
       <td>GET</td>
       <td>200</td>
     </tr>
     <tr>
       <td>일기 구간 조회</td>
-      <td>/diaries/read?date={date}</td>
+      <td>/read/diaries?date={date}</td>
       <td>GET</td>
       <td>200</td>
     </tr>
     <tr>
       <td>일기 수정</td>
-      <td>/diary/update?date={date}</td>
+      <td>/update/diary?date={date}</td>
       <td>PUT</td>
       <td>200</td>
     </tr>
     <tr>
       <td>일기 삭제</td>
-      <td>/diary/delete?date={date}</td>
+      <td>/delete/diary?date={date}</td>
       <td>DELETE</td>
       <td>200</td>
     </tr>
@@ -124,25 +124,20 @@
 
 # Swagger UI
 - 날씨 일기 생성 API
-<img width="1315" alt="날씨일기전체API" src="https://github.com/user-attachments/assets/29077498-babd-4d48-844e-7e94a75bc65f">
 <br>
 <br>
 
 - 날씨 일기 조회 API
-<img width="1290" alt="날씨일기조회" src="https://github.com/user-attachments/assets/d248570a-832f-4295-a6c3-03d1f9d91feb">
 <br>
 <br>
 
 - 날씨 일기 구간 조회 API
-<img width="1288" alt="날씨일기구간조회" src="https://github.com/user-attachments/assets/e71a37b9-dffb-4937-97d8-d66fe0027fd0">
 <br>
 <br>
 
 - 날씨 일기 수정 API
-<img width="1297" alt="날씨일기수정" src="https://github.com/user-attachments/assets/9a6cbd76-0961-4bd1-b40a-0bf5bbd0621b">
 <br>
 <br>
 
 - 날씨 일기 삭제 API
-<img width="1289" alt="날씨일기삭제" src="https://github.com/user-attachments/assets/47e3d90f-39c2-4acd-a868-eb3b88e17a92">
 

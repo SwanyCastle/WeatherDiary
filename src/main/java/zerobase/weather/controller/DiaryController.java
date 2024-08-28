@@ -22,7 +22,7 @@ public class DiaryController {
 
     @Tag(name = "Weather Diary API")
     @Operation(summary = "Diary 생성", description = "날씨 일기 생성 API")
-    @PostMapping("/diary/create")
+    @PostMapping("/create/diary")
     public void createDiary(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             @Parameter(description = "날씨 일기를 생성할 날짜", example = "2024-01-01")
@@ -34,7 +34,7 @@ public class DiaryController {
 
     @Tag(name = "Weather Diary API")
     @Operation(summary = "Diary 조회", description = "날씨 일기 조회 API")
-    @GetMapping("/diary/read")
+    @GetMapping("/read/diary")
     public List<Diary> readDiary(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             @Parameter(description = "날씨 일기를 조회할 날짜", example = "2024-01-01")
@@ -45,7 +45,7 @@ public class DiaryController {
 
     @Tag(name = "Weather Diary API")
     @Operation(summary = "Diary 조회", description = "날씨 일기 구간 조회 API")
-    @GetMapping("/diaries/read")
+    @GetMapping("/read/diaries")
     public List<Diary> readDiaries(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             @Parameter(description = "날씨 일기를 조회할 시작 날짜", example = "2024-01-01")
@@ -59,7 +59,7 @@ public class DiaryController {
 
     @Tag(name = "Weather Diary API")
     @Operation(summary = "Diary 수정", description = "날씨 일기 수정 API")
-    @PutMapping("/diary/update")
+    @PutMapping("/update/diary")
     public void updateDiary(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             @Parameter(description = "날씨 일기를 수정할 날짜", example = "2024-01-01")
@@ -71,7 +71,7 @@ public class DiaryController {
 
     @Tag(name = "Weather Diary API")
     @Operation(summary = "Diary 삭제", description = "날씨 일기 삭제 API")
-    @DeleteMapping("/diary/delete")
+    @DeleteMapping("/delete/diary")
     public void deleteDiary(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
             @Parameter(description = "날씨 일기를 삭제할 날짜", example = "2024-01-01")
